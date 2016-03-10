@@ -1,0 +1,58 @@
+﻿@model Partners.ViewModels.CompanyAccsModel
+
+@{
+    ViewBag.Title = "Partners";
+}
+
+<div class="outer">
+    <div class="container">
+
+        <h2>Find an Act! Certified Consultant</h2>
+
+        <form action="" method="get">
+            <select name="StateID">
+                @foreach (var item in Model.States)
+                {
+                    <option value="@item.StateID">@item.Name</option>
+                    //@Html.ActionLink(item.Name, "Index", new { StateID = item.StateID})<br/>
+                }
+            </select>
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+</div>
+
+@if (Model.CompanyData != null)
+{
+    <div class="outer">
+        <div class="container inner">
+            @foreach (var item in Model.CompanyData)
+            {
+                <!-- This is the company listing by state by UUM -->
+                <div class="row company">
+                    <div class="col-9">
+                        <h3>@item.Company</h3>
+                        <p><a href=http://@item.Website target="_blank">@item.Website</a></p>
+                    </div>
+                    <div class="col-3">
+                        <p>@item.Tier</p>
+                    </div>
+                </div>
+                
+                    <div>
+                    <!-- ACC (This needs to be a loop within the company keyed off CompanyID/AccID match) -->
+                      <div class="row acc">
+                        <div class="col-9">
+                            <h4>@item.FirstName @item.LastName</h4>
+                            <h5>@item.City, @item.Abbr</h5>
+                            <p><a href=mailto:@item.Email>@item.Email</a> | <a href=tel:@item.Phone>@item.Phone</a></p>
+                        </div>
+                        <div class="col-3">
+                            <p>Year Certified:<br />@item.YearCertified</p>
+                        </div>
+                      </div>
+                    </div>
+            }
+        </div>
+    </div>
+}

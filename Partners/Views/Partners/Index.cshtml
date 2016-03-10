@@ -1,0 +1,135 @@
+﻿@model Partners.ViewModels.PartnerModel
+
+@{
+    ViewBag.Title = "Find a Partner";
+}
+
+<style type="text/css">
+    .search {
+        padding-top: 180px;
+    }
+
+    .company {
+        padding: 2em;
+    }
+
+        .company h3 {
+            margin: 0 0 -.5em;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .company:nth-child(even) {
+            background: #eee;
+        }
+</style>
+
+<script type="text/javascript">
+    // Get URL Parameters
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var cid = getParameterByName('CountryID');
+    var sid = getParameterByName('StateID');
+    // Submit form onchange
+    $(document).ready(function () {
+        $('#allCities').click(function () {
+            $('.company').show();
+        })
+        $('#select').click(function () {
+            $('#partnerSelect').submit();
+        });
+        $('#apt').click(function () {
+            $('#partnerSelect').submit();
+        });
+        $('#countrySelect').change(function () {
+            $('#partnerSelect').submit();
+        });
+        $('#stateSelect').change(function () {
+            $('#partnerSelect').submit();
+        });
+        $('#getCountry').val(cid);
+        $('#getState').val(sid);
+    });
+</script>
+
+<h2>Find a Partner</h2>
+
+<div class="outer search bg_blue">
+    <div class="container">
+
+        <h2 class="text-center">Find an Act! Certified Consultant</h2>
+
+        <div class="row inner">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form id="partnerSelect" action="" method="get">
+                    <select name="CountryID" id="countrySelect">
+                        <option id="getCountry">Select Country</option>
+                        @foreach (var country in Model.Countries)
+                        {
+                            <option value="@country.CountryID">@country.CountryName</option>
+                        }
+                    </select>
+                    @if (Model.CountryData != null)
+                    {
+                        <select name="StateID" id="stateSelect">
+                            <option id="getState">Select State</option>
+                            @foreach (var state in Model.StateData)
+                            {
+                                <option value="@state.StateID">@state.State</option>
+                            }
+                        </select>
+                    }
+                    <input id="select" type="radio" name="Select" value="1" /> Select Certified Consultants<br/>
+            <input id="apt" type="radio" name="PremierTrainer" value="1" /> Premier Trainers (U.S. Only)<br/>
+                </form>
+            </div>
+
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+
+@if (Model.CompanyData != null)
+{
+    <div class="outer bg_lightblue">
+        <div class="container inner text-center">
+            <div class="col-4 text-center"><a href="#" id="allCities">View All</a></div>
+            @foreach (var company in Model.CompanyData)
+            {
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#@company.City').click(function () {
+                            $('.company').hide();
+                            $('.@company.City').show();
+                        })
+                    });
+                </script>
+                <div class="col-4 text-center"><a href="#" id="@company.City">@company.City</a></div>
+            }
+        </div>
+    </div>
+    <div class="outer partners">
+        <div class="container inner">
+            @foreach (var company in Model.CompanyData)
+            {
+                <div class="row company @company.City">
+                    <div class="col-3">
+                        <h3>@company.FirstName @company.LastName</h3>
+                        <p>@company.City, @company.Abbr<br /><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
+                    </div>
+                    <div class="col-3">
+                        <img src="http://www.act.com/images/default-source/partner-logos/diamondsm.png" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
