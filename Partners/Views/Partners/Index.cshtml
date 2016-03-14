@@ -6,9 +6,46 @@
 
 <style type="text/css">
     .search {
-        padding-top: 180px;
+        background:#FFF url(/Content/img/map.png) center center no-repeat;
+        padding:24px 0;
     }
-
+    .search select{
+        margin:0 auto 1.5em;
+    }
+    .search input[type=checkbox]{
+        margin:.75em auto;
+    }
+    .search h3{
+        margin:1em auto .25em;
+        color:#008cc5;
+        font-family:'HelveticaNeueW01-75Bold',Helvetica,Arial,sans serif;
+    }
+    .search input[type=submit]{
+        display:block;
+        margin:1.5em auto;
+    }
+    .citySearch {
+        background:#e5f3f9 url(/Content/img/map.png) center center no-repeat;
+        padding:24px 0;
+    }
+    .citySearch a{
+        color:#2a353d;
+        font-weight:bold;
+    }
+    .citySearch h3{
+        text-align:left;
+        margin: 0 0 .5em;
+        border-bottom:#a5b7c2 1px solid;
+        padding-bottom:.5em;
+    }
+    .city{
+        font-size:14px;
+        line-height:2em;
+    }
+    .newSearch{
+        font-size:14px;
+        float:right;
+    }
     .company {
         padding: 2em;
     }
@@ -20,9 +57,16 @@
         }
 
         .company:nth-child(even) {
-            background: #eee;
+            background: #f9f9f9;
         }
 </style>
+@if (Model.CompanyData != null)
+    {
+        <style type="text/css">
+            .search{display:none;}
+        </style>
+    }
+
 
 <script type="text/javascript">
     // Get URL Parameters
@@ -34,6 +78,8 @@
     }
     var cid = getParameterByName('CountryID');
     var sid = getParameterByName('StateID');
+    var sel = getParameterByName('Select');
+    var apt = getParameterByName('PremierTrainer');
     // Submit form onchange
     $(document).ready(function () {
         $('#allCities').click(function () {
@@ -48,45 +94,50 @@
         $('#countrySelect').change(function () {
             $('#partnerSelect').submit();
         });
-        $('#stateSelect').change(function () {
-            $('#partnerSelect').submit();
-        });
         $('#getCountry').val(cid);
         $('#getState').val(sid);
     });
 </script>
 
-<h2>Find a Partner</h2>
-
-<div class="outer search bg_blue">
+<div class="outer bg_blue">
     <div class="container">
+        <h1 class="text-center">Find an Act! Certified Consultant</h1>
+    </div>
+</div>
 
-        <h2 class="text-center">Find an Act! Certified Consultant</h2>
-
+<div class="outer search">
+    <div class="container">
         <div class="row inner">
             <div class="col-3"></div>
             <div class="col-6">
-                <form id="partnerSelect" action="" method="get">
+                <form id="partnerSelect" action="/" method="get">
+                    <h3>Select A Country</h3>
                     <select name="CountryID" id="countrySelect">
-                        <option id="getCountry">Select Country</option>
+                       <option id="getCountry"></option>
+                                
                         @foreach (var country in Model.Countries)
                         {
                             <option value="@country.CountryID">@country.CountryName</option>
                         }
                     </select>
-                    @if (Model.CountryData != null)
+                    @if (Model.StateData != null)
                     {
+                        <h3>Select A State</h3>
                         <select name="StateID" id="stateSelect">
-                            <option id="getState">Select State</option>
+                            <option id="getState" />
                             @foreach (var state in Model.StateData)
                             {
                                 <option value="@state.StateID">@state.State</option>
                             }
                         </select>
                     }
-                    <input id="select" type="radio" name="Select" value="1" /> Select Certified Consultants<br/>
-            <input id="apt" type="radio" name="PremierTrainer" value="1" /> Premier Trainers (U.S. Only)<br/>
-                </form>
+                    <h3>Select the type(s) of ACC you&rsquo;re looking for</h3>
+                        <div><input id="select" type="checkbox" name="All" value="1" /> <label>All Certified Consultants</label></div>
+                        <div><input type="checkbox" name="Select" value="1" /> <label>Select Certified Consultants</label></div>
+                        <div><input type="checkbox" name="PremierTrainer" value="1" /> <label>Premier Trainers (U.S. Only)</label></div>
+
+                    <input type="submit" class="btnBlue" value="Search" />
+</form>
             </div>
 
             <div class="col-3"></div>
@@ -96,40 +147,54 @@
 
 @if (Model.CompanyData != null)
 {
-    <div class="outer bg_lightblue">
-        <div class="container inner text-center">
-            <div class="col-4 text-center"><a href="#" id="allCities">View All</a></div>
-            @foreach (var company in Model.CompanyData)
-            {
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#@company.City').click(function () {
-                            $('.company').hide();
-                            $('.@company.City').show();
-                        })
-                    });
-                </script>
-                <div class="col-4 text-center"><a href="#" id="@company.City">@company.City</a></div>
-            }
+    <div class="partnerContainer">
+        <div class="outer bg_lightblue citySearch">
+            <div class="container inner text-center">
+                <h3>
+                    @foreach (var country in Model.CountryData)
+                    {
+                        @country.CountryName;
+                    }
+                    &nbsp;|&nbsp; 
+                    @foreach (var state in Model.StateData)
+                    {
+                        @state.State;
+                    }
+                    <a class="newSearch" href="/">&times; New Search</a>
+                </h3>
+                <div class="col-4 city"><a href="#" id="allCities">All Cities</a></div>
+                @foreach (var company in Model.CompanyData)
+                {
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#@company.City').click(function () {
+                                $('.company').hide();
+                                $('.@company.City').show();
+                            })
+                        });
+                    </script>
+                    <div class="col-4 city"><a href="#" id="@company.City">@company.City</a></div>
+                }
+            </div>
         </div>
-    </div>
-    <div class="outer partners">
-        <div class="container inner">
-            @foreach (var company in Model.CompanyData)
-            {
-                <div class="row company @company.City">
-                    <div class="col-3">
-                        <h3>@company.FirstName @company.LastName</h3>
-                        <p>@company.City, @company.Abbr<br /><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
+        <div class="outer partners">
+            <div class="container inner">
+                @foreach (var company in Model.CompanyData)
+                {
+                    <div class="row company @company.City">
+                        <div class="col-3">
+                            <h3>@company.FirstName @company.LastName</h3>
+                            <p>@company.City, @company.Abbr<br /><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
+                        </div>
+                        <div class="col-3">
+                            <img src="http://www.act.com/images/default-source/partner-logos/diamondsm.png" />
+                        </div>
                     </div>
-                    <div class="col-6 text-center">
-                        <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
-                    </div>
-                    <div class="col-3">
-                        <img src="http://www.act.com/images/default-source/partner-logos/diamondsm.png" />
-                    </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 }

@@ -923,8 +923,8 @@
 .sfPageEditor .navigation{
     position:unset;
 }
-.navigation + div.outer > div.container{
-    margin-top:128px;
+div.outer.bg_blue{
+    padding:160px 0 32px 0;
 }
     nav {
         display: block !important;
@@ -1320,6 +1320,22 @@ input:focus {
 }
 .btnCTA:hover{
     background:#2e81b6;
+}
+.btnBlue{
+    color:#FFF !important;
+    background:#008cc5;
+    border:none;
+}
+.btnBlue:hover{
+    background:#2e81b6;
+}
+.btnWhite{
+    background:#FFF:
+    color:#008cc5;
+    border:none;
+}
+.btnWhite:hover{
+    color:#2e81b6;
 }
 .button > span.glyphicon, button > span.glyphicon, input[type='button'] > span.glyphicon, input[type='submit'] > span.glyphicon{
     display:inline-block;

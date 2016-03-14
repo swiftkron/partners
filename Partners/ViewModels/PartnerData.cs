@@ -16,19 +16,8 @@ namespace Partners.ViewModels
     }
     public class CountryData
     {
-        public int StateID { get; set; }
-        public string State { get; set; }
-        public string Abbr { get; set; }
-        public int CompanyID { get; set; }
-        public string Company { get; set; }
-        public string Website { get; set; }
-        public string Phone { get; set; }
-        public string Tier { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string City { get; set; }
-        public string YearCertified { get; set; }
+        public int CountryID { get; set; }
+        public string CountryName { get; set; }
     }
     public class StateData
     {

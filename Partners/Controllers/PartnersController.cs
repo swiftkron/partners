@@ -35,36 +35,13 @@ namespace Partners.Controllers
                 }).ToList();
 
                 viewModel.StateData = state_data;
-                
-                var ctry_data = (from acc in db.Accs
-                                 join co in db.Companys on acc.CompanyID equals co.CompanyID
-                                 join state in db.States on acc.StateID equals state.StateID
-                                 join ctry in db.Countries on state.CountryID equals ctry.CountryID                                 
-                                 where ctry.CountryID == country
-                                 select new CountryData
-                                 {
-                                     CompanyID = co.CompanyID,
-                                     Company = co.Title,
-                                     Website = co.Website,
-                                     Phone = co.Phone,
-                                     Tier = co.Tier,
-                                     FirstName = acc.FirstName,
-                                     LastName = acc.LastName,
-                                     Email = acc.Email,
-                                     YearCertified = acc.YearCertified,
-                                     City = acc.City,
-                                     StateID = state.StateID,
-                                     State = state.Name,
-                                     Abbr = state.Abbr
-                                 }).ToList();
-
-                viewModel.CountryData = ctry_data;
 
             }
 
             // Get Partners by State order by UUM
             if (StateID != null)
             {
+                var country = CountryID.Value;
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs
                               join co in db.Companys on acc.CompanyID equals co.CompanyID
@@ -87,7 +64,18 @@ namespace Partners.Controllers
                                   Abbr = st.Abbr
                               }).ToList();
 
+                var my_country = (from ctry in db.Countries
+                                where ctry.CountryID == country
+                                select new CountryData{
+                                    CountryName = ctry.CountryName
+                                }).ToList();
 
+                var my_state = (from st in db.States where st.StateID == state select new StateData{
+                    State = st.Name,
+                }).ToList();
+
+                viewModel.CountryData = my_country;
+                viewModel.StateData = my_state;
                 viewModel.CompanyData = c_data.OrderByDescending(c => c.UUM);
 
             }
