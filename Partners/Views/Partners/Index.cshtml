@@ -5,60 +5,6 @@
 }
 
 <style type="text/css">
-    .search {
-        background:#FFF url(/Content/img/map.png) center center no-repeat;
-        padding:24px 0;
-    }
-    .search select{
-        margin:0 auto 1.5em;
-    }
-    .search input[type=checkbox]{
-        margin:.75em auto;
-    }
-    .search h3{
-        margin:1em auto .25em;
-        color:#008cc5;
-        font-family:'HelveticaNeueW01-75Bold',Helvetica,Arial,sans serif;
-    }
-    .search input[type=submit]{
-        display:block;
-        margin:1.5em auto;
-    }
-    .citySearch {
-        background:#e5f3f9 url(/Content/img/map.png) center center no-repeat;
-        padding:24px 0;
-    }
-    .citySearch a{
-        color:#2a353d;
-        font-weight:bold;
-    }
-    .citySearch h3{
-        text-align:left;
-        margin: 0 0 .5em;
-        border-bottom:#a5b7c2 1px solid;
-        padding-bottom:.5em;
-    }
-    .city{
-        font-size:14px;
-        line-height:2em;
-    }
-    .newSearch{
-        font-size:14px;
-        float:right;
-    }
-    .company {
-        padding: 2em;
-    }
-
-        .company h3 {
-            margin: 0 0 -.5em;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .company:nth-child(even) {
-            background: #f9f9f9;
-        }
 </style>
 @if (Model.CompanyData != null)
     {
@@ -110,7 +56,7 @@
         <div class="row inner">
             <div class="col-3"></div>
             <div class="col-6">
-                <form id="partnerSelect" action="/" method="get">
+                <form id="partnerSelect" action="/partners/" method="get">
                     <h3>Select A Country</h3>
                     <select name="CountryID" id="countrySelect">
                        <option id="getCountry"></option>
@@ -160,20 +106,20 @@
                     {
                         @state.State;
                     }
-                    <a class="newSearch" href="/">&times; New Search</a>
+                    <a class="newSearch" href="/partners">&times; New Search</a>
                 </h3>
                 <div class="col-4 city"><a href="#" id="allCities">All Cities</a></div>
-                @foreach (var company in Model.CompanyData)
+                @foreach (var city in Model.CityData)
                 {
                     <script type="text/javascript">
                         $(document).ready(function () {
-                            $('#@company.City').click(function () {
+                            $('#@city.City').click(function () {
                                 $('.company').hide();
-                                $('.@company.City').show();
+                                $('.@city.City').show();
                             })
                         });
                     </script>
-                    <div class="col-4 city"><a href="#" id="@company.City">@company.City</a></div>
+                    <div class="col-4 city"><a href="#" id="@city.City">@city.City</a></div>
                 }
             </div>
         </div>

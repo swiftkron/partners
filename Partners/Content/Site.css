@@ -923,7 +923,7 @@
 .sfPageEditor .navigation{
     position:unset;
 }
-div.outer.bg_blue{
+div.outer.bg_blue > div.container:first-child{
     padding:160px 0 32px 0;
 }
     nav {
@@ -1330,7 +1330,7 @@ input:focus {
     background:#2e81b6;
 }
 .btnWhite{
-    background:#FFF:
+    background:#FFF;
     color:#008cc5;
     border:none;
 }
@@ -2688,3 +2688,58 @@ iframe#chatFrame {
 .RadSocialShare{
     padding:0;
 }
+/* PARTNERS */
+    .search {
+        background:#FFF url(/Content/img/map.png) center center no-repeat;
+        padding:24px 0;
+    }
+    .search select{
+        margin:0 auto 1.5em;
+    }
+    .search input[type=checkbox]{
+        margin:.75em auto;
+    }
+    .search h3{
+        margin:1em auto .25em;
+        color:#008cc5;
+        font-family:'HelveticaNeueW01-75Bold',Helvetica,Arial,sans serif;
+    }
+    .search input[type=submit]{
+        display:block;
+        margin:1.5em auto;
+    }
+    .citySearch {
+        background:#e5f3f9 url(/Content/img/map.png) center center no-repeat;
+        padding:24px 0;
+    }
+    .citySearch a{
+        color:#2a353d;
+        font-weight:bold;
+    }
+    .citySearch h3{
+        text-align:left;
+        margin: 0 0 .5em;
+        border-bottom:#a5b7c2 1px solid;
+        padding-bottom:.5em;
+    }
+    .city{
+        font-size:14px;
+        line-height:2em;
+    }
+    .newSearch{
+        font-size:14px;
+        float:right;
+    }
+    .company {
+        padding: 2em;
+    }
+
+        .company h3 {
+            margin: 0 0 -.5em;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .company:nth-child(even) {
+            background: #f9f9f9;
+        }

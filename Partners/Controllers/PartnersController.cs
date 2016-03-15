@@ -74,8 +74,17 @@ namespace Partners.Controllers
                     State = st.Name,
                 }).ToList();
 
+                var my_cities = (from st in db.States
+                                 join acc in db.Accs on st.StateID equals acc.StateID
+                                  where st.StateID == state
+                                  select new CityData
+                                  {
+                                      City = acc.City
+                                  }).ToList();
+
                 viewModel.CountryData = my_country;
                 viewModel.StateData = my_state;
+                viewModel.CityData = my_cities;
                 viewModel.CompanyData = c_data.OrderByDescending(c => c.UUM);
 
             }

@@ -12,6 +12,7 @@ namespace Partners.ViewModels
         public IEnumerable<State> States { get; set; }
         public IEnumerable<CountryData> CountryData { get; set; }
         public IEnumerable<StateData> StateData { get; set; }
+        public IEnumerable<CityData> CityData { get; set; }
         public IEnumerable<CompanyData> CompanyData { get; set; }
     }
     public class CountryData
@@ -19,6 +20,10 @@ namespace Partners.ViewModels
         public int CountryID { get; set; }
         public string CountryName { get; set; }
     }
+    public class CityData
+    {
+        public string City { get; set; }
+    } 
     public class StateData
     {
         public int StateID { get; set; }
