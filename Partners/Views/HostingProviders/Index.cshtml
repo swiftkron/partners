@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Act! Hosting Providers";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.moreInfo').click(function () {
+            $(this).next('.moreDets').slideToggle('2000');
+            $(this).closest('.glyphicon').toggleClass('glyphicon-minus');
+        });
+    });
+</script>
+
+<div class="outer bg_blue">
+    <div class="container">
+        <h1 class="text-center">Hosting Providers</h1>
+    </div>
+</div>
+
+<div id="partnerList">
+
+    <div class="outer hp">
+        <div class="container inner">
+            <div class="row">
+                <div class="col-2"><img src="http://act.com/images/default-source/partner-logos/TopLine_Results_logo.jpg" /></div>
+                <div class="col-10 hpTitle">
+                    <h2>Company Name</h2>
+                    <p>Sales: 800-000-0000 | Support: 800-000-0000</p>
+                </div>
+            </div>
+            <div class="row inner">
+                <ul>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                </ul>
+            </div>
+            <div class="row inner more">
+                <p class="moreInfo"><span class="glyphicon glyphicon-plus"></span> More Hosting Information</p>
+                <div class="moreDets">
+                    <p>Enjoy Act! "Unleashed" with database hosting from Keystroke Quality Computing Inc.</p>
+                    <p>
+                        Keystroke offers three tiers of service to support all types of CRM needs and provide the most flexibility
+                        and greatest value to our hosting clients.
+                    </p>
+                    <p>
+                        We offer FLAT RATE pricing for Act! hosting at different levels, including our 'Hybrid' package focusing on
+                        3-9 users, 10-19 users and 20-29 users. It's the best value in the business!
+                    </p>
+                    <p>What do our services include?</p>
+                </div>
+            </div>
+            <div class="inner">
+                <a href=""><span class="button btnBlue">Learn More</span></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@*<script src="~/Scripts/HostingProviders.js"></script>*@

@@ -162,8 +162,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccsController.cs" />
+    <Compile Include="Controllers\AffiliateProgramController.cs" />
+    <Compile Include="Controllers\BecomeAnAccController.cs" />
+    <Compile Include="Controllers\DevelopmentPartnerProgramController.cs" />
+    <Compile Include="Controllers\DistributorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HostingProviderController.cs" />
+    <Compile Include="Controllers\HostingProvidersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
     <Compile Include="DAL\PartnerContext.cs" />
@@ -256,7 +260,11 @@
     <Content Include="Views\Accs\Index.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Partners\Index.cshtml" />
-    <Content Include="Views\HostingProvider\Index.cshtml" />
+    <Content Include="Views\HostingProviders\Index.cshtml" />
+    <Content Include="Views\Distributors\Index.cshtml" />
+    <Content Include="Views\AffiliateProgram\Index.cshtml" />
+    <Content Include="Views\BecomeAnAcc\Index.cshtml" />
+    <Content Include="Views\DevelopmentPartnerProgram\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

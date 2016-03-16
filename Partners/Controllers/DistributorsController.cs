@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Partners.Controllers
 {
-    public class HostingProviderController : Controller
+    public class DistributorsController : Controller
     {
-        // GET: HostingProvider
+        // GET: Distributors
         public ActionResult Index()
         {
             return View();
