@@ -56,3 +56,4 @@ C:\Users\Jeremy.Kron\Documents\education\Partners\Partners\obj\Debug\Partners.pd
 C:\Users\Jeremy.Kron\Documents\education\Partners\Partners\obj\Debug\Partners.Migrations.InitialCreate.resources
 C:\Users\Jeremy.Kron\Documents\education\Partners\Partners\obj\Debug\Partners.csproj.GenerateResource.Cache
 C:\Users\Jeremy.Kron\Documents\education\Partners\Partners\obj\Debug\Partners.Migrations.ChangePartnerTypetoInt.resources
+C:\Users\Jeremy.Kron\Documents\education\Partners\Partners\obj\Debug\Partners.Migrations.InitializeProd.resources

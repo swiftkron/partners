@@ -11,116 +11,107 @@ using Partners.Models;
 
 namespace Partners.Controllers
 {
-    public class AccsController : Controller
+    public class CompaniesController : Controller
     {
         private PartnerContext db = new PartnerContext();
 
-        // GET: Accs
+        // GET: Companies
         public ActionResult Index()
         {
-            var accs = db.Accs.Include(a => a.Company).Include(a => a.State);
-            return View(accs.ToList());
+            return View(db.Companys.ToList());
         }
 
-        // GET: Accs/Details/5
+        // GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            Company company = db.Companys.Find(id);
+            if (company == null)
             {
                 return HttpNotFound();
             }
-            return View(acc);
+            return View(company);
         }
 
-        // GET: Accs/Create
+        // GET: Companies/Create
         public ActionResult Create()
         {
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title");
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr");
             return View();
         }
 
-        // POST: Accs/Create
+        // POST: Companies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccID,CompanyID,StateID,FirstName,LastName,Email,City,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Create([Bind(Include = "CompanyID,Title,Website,Phone,Tier")] Company company)
         {
             if (ModelState.IsValid)
             {
-                db.Accs.Add(acc);
+                db.Companys.Add(company);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            return View(company);
         }
 
-        // GET: Accs/Edit/5
+        // GET: Companies/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            Company company = db.Companys.Find(id);
+            if (company == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            return View(company);
         }
 
-        // POST: Accs/Edit/5
+        // POST: Companies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccID,CompanyID,StateID,FirstName,LastName,Email,City,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Edit([Bind(Include = "CompanyID,Title,Website,Phone,Tier")] Company company)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(acc).State = EntityState.Modified;
+                db.Entry(company).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            return View(company);
         }
 
-        // GET: Accs/Delete/5
+        // GET: Companies/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            Company company = db.Companys.Find(id);
+            if (company == null)
             {
                 return HttpNotFound();
             }
-            return View(acc);
+            return View(company);
         }
 
-        // POST: Accs/Delete/5
+        // POST: Companies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Acc acc = db.Accs.Find(id);
-            db.Accs.Remove(acc);
+            Company company = db.Companys.Find(id);
+            db.Companys.Remove(company);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

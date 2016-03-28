@@ -1,92 +1,59 @@
-﻿@model Partners.ViewModels.CompanyModel
+﻿@model IEnumerable<Partners.Models.Company>
 
 @{
-    ViewBag.Title = "Partners";
+    Layout = null;
 }
 
-<style type="text/css">
-    .search {
-        padding-top: 180px;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tier)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tier)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CompanyID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CompanyID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CompanyID })
+            </td>
+        </tr>
     }
-
-    .company {
-        padding: 2em;
-    }
-    .company h3{margin:0 0 -.5em;font-size:1.2em;font-weight:bold;}
-
-        .company:nth-child(even) {
-            background: #eee;
-        }
-</style>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#all').click(function () {
-            $('.company').show();
-        })
-    });
-</script>
-
-<div class="outer search bg_blue">
-    <div class="container">
-
-        <h2 class="text-center">Find an Act! Certified Consultant</h2>
-
-        <div class="row inner">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <form action="" method="get">
-                    <select name="StateID">
-                        <option>Select State</option>
-                        @foreach (var item in Model.States)
-                        {
-                            <option value="@item.StateID">@item.Name</option>
-                        }
-                    </select>
-                    <input type="submit" value="Search" class="btnDefault" style="display:block;margin:1em auto;" />
-                </form>
-            </div>
-            <div class="col-3"></div>
-        </div>
-    </div>
-</div>
-
-@if (Model.CompanyData != null)
-{
-    <div class="outer bg_lightblue">
-        <div class="container inner text-center">
-            <div class="col-4 text-center"><a href="#" id="all">View All</a></div>
-            @foreach (var company in Model.CompanyData)
-            {
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#@company.City').click(function () {
-                            $('.company').hide();
-                            $('.@company.City').show();
-                        })
-                    });
-                </script>
-                <div class="col-4 text-center"><a href="#" id="@company.City">@company.City</a></div>
-            }
-        </div>
-    </div>
-    <div class="outer partners">
-        <div class="container inner">
-            @foreach (var company in Model.CompanyData)
-            {
-                <div class="row company @company.City">
-                    <div class="col-3">
-                        <h3>@company.FirstName @company.LastName</h3>
-                        <p>@company.City, @company.Abbr<br/><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br/><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
-                    </div>
-                    <div class="col-6 text-center">
-                        <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
-                    </div>
-                    <div class="col-3">
-                        <img src="http://www.act.com/images/default-source/partner-logos/diamondsm.png" />
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-}
+    
+    </table>
+</body>
+</html>

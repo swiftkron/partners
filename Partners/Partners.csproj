@@ -164,12 +164,14 @@
     <Compile Include="Controllers\AccsController.cs" />
     <Compile Include="Controllers\AffiliateProgramController.cs" />
     <Compile Include="Controllers\BecomeAnAccController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\DevelopmentPartnerProgramController.cs" />
     <Compile Include="Controllers\DistributorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostingProvidersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
+    <Compile Include="Controllers\UnitsController.cs" />
     <Compile Include="DAL\PartnerContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +183,10 @@
     <Compile Include="Migrations\201603080307465_ChangePartnerTypetoInt.cs" />
     <Compile Include="Migrations\201603080307465_ChangePartnerTypetoInt.Designer.cs">
       <DependentUpon>201603080307465_ChangePartnerTypetoInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603162203547_InitializeProd.cs" />
+    <Compile Include="Migrations\201603162203547_InitializeProd.Designer.cs">
+      <DependentUpon>201603162203547_InitializeProd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Acc.cs" />
@@ -253,11 +259,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\CompanyAccs\Index.cshtml" />
-    <Content Include="Views\Accs\Create.cshtml" />
-    <Content Include="Views\Accs\Delete.cshtml" />
-    <Content Include="Views\Accs\Details.cshtml" />
-    <Content Include="Views\Accs\Edit.cshtml" />
-    <Content Include="Views\Accs\Index.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Partners\Index.cshtml" />
     <Content Include="Views\HostingProviders\Index.cshtml" />
@@ -265,6 +266,20 @@
     <Content Include="Views\AffiliateProgram\Index.cshtml" />
     <Content Include="Views\BecomeAnAcc\Index.cshtml" />
     <Content Include="Views\DevelopmentPartnerProgram\Index.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Accs\Create.cshtml" />
+    <Content Include="Views\Accs\Delete.cshtml" />
+    <Content Include="Views\Accs\Details.cshtml" />
+    <Content Include="Views\Accs\Edit.cshtml" />
+    <Content Include="Views\Accs\Index.cshtml" />
+    <Content Include="Views\Units\Create.cshtml" />
+    <Content Include="Views\Units\Delete.cshtml" />
+    <Content Include="Views\Units\Details.cshtml" />
+    <Content Include="Views\Units\Edit.cshtml" />
+    <Content Include="Views\Units\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603080307465_ChangePartnerTypetoInt.resx">
       <DependentUpon>201603080307465_ChangePartnerTypetoInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603162203547_InitializeProd.resx">
+      <DependentUpon>201603162203547_InitializeProd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

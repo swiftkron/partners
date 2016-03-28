@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Partners.Models.Unit>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Company.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State.Abbr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UUM)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State.Abbr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UUM)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.UnitID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.UnitID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.UnitID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
