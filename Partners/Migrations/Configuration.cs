@@ -16,14 +16,6 @@ namespace Partners.Migrations
 
         protected override void Seed(Partners.DAL.PartnerContext context)
         {
-            var companies = new List<Company>
-            {
-                new Company { Title = "3Leaf CRM", Website = "www.3leafcrm.com", Tier = "Gold", Phone = "410-409-9400" },
-                new Company { Title = "A Shell", Website = "", Tier = "Bronze", Phone = "704-470-5305" }
-            };
-            companies.ForEach(s => context.Companys.AddOrUpdate(p => p.Title, s));
-            context.SaveChanges();
-
             var countries = new List<Country>
             {
                 new Country {CountryName = "United States"},
@@ -108,57 +100,6 @@ namespace Partners.Migrations
             states.ForEach(s => context.States.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
-            var units = new List<Unit>
-            {
-                new Unit { 
-                    CompanyID = companies.Single(s => s.Title == "3Leaf CRM").CompanyID, 
-                    StateID = states.Single(c => c.Abbr == "MD" ).StateID, 
-                    UUM = 100 
-                },
-                new Unit { 
-                    CompanyID = companies.Single(s => s.Title == "A Shell").CompanyID, 
-                    StateID = states.Single(c => c.Abbr == "NC" ).StateID, 
-                    UUM = 200 
-                }
-            };
-
-            foreach (Unit u in units)
-            {
-                var unitInDataBase = context.Units.Where(
-                    s =>
-                         s.CompanyID == u.CompanyID &&
-                         s.StateID == u.StateID).SingleOrDefault();
-                if (unitInDataBase == null)
-                {
-                    context.Units.Add(u);
-                }
-            }
-            context.SaveChanges();
-
-            var accs = new List<Acc>
-            {
-                new Acc { 
-                    CompanyID = companies.Single(s => s.Title == "3Leaf CRM").CompanyID, 
-                    StateID = states.Single(c => c.Abbr == "MD" ).StateID,
-                    FirstName = "Michelle", LastName = "Scott", Email = "mscott@3leafcrm.com", City = "Parkton", YearCertified = "1999"},
-                new Acc { 
-                    CompanyID = companies.Single(s => s.Title == "A Shell").CompanyID, 
-                    StateID = states.Single(c => c.Abbr == "NC" ).StateID,
-                    FirstName = "Andrea", LastName = "Shell", Email = "acsads11@gmail.com", City = "Cherryville", YearCertified = "2005"}
-            };
-
-            foreach (Acc a in accs)
-            {
-                var accInDataBase = context.Accs.Where(
-                    s =>
-                         s.CompanyID == a.CompanyID &&
-                         s.StateID == a.StateID).SingleOrDefault();
-                if (accInDataBase == null)
-                {
-                    context.Accs.Add(a);
-                }
-            }
-            context.SaveChanges();
 
         }
     }

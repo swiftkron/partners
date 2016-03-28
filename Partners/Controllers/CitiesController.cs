@@ -11,120 +11,112 @@ using Partners.Models;
 
 namespace Partners.Controllers
 {
-    public class AccsController : Controller
+    public class CitiesController : Controller
     {
         private PartnerContext db = new PartnerContext();
 
-        // GET: Accs
+        // GET: Cities
         public ActionResult Index()
         {
-            var accs = db.Accs.Include(a => a.City).Include(a => a.Company).Include(a => a.State);
-            return View(accs.ToList());
+            var cities = db.Cities.Include(c => c.State);
+            return View(cities.ToList());
         }
 
-        // GET: Accs/Details/5
+        // GET: Cities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            City city = db.Cities.Find(id);
+            if (city == null)
             {
                 return HttpNotFound();
             }
-            return View(acc);
+            return View(city);
         }
 
-        // GET: Accs/Create
+        // GET: Cities/Create
         public ActionResult Create()
         {
-            ViewBag.CityID = new SelectList(db.Cities, "CityID", "Name");
-            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title");
             ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr");
             return View();
         }
 
-        // POST: Accs/Create
+        // POST: Cities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Create([Bind(Include = "CityID,StateID,Name")] City city)
         {
             if (ModelState.IsValid)
             {
-                db.Accs.Add(acc);
+                db.Cities.Add(city);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CityID = new SelectList(db.Cities, "CityID", "Name", acc.CityID);
-            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", city.StateID);
+            return View(city);
         }
 
-        // GET: Accs/Edit/5
+        // GET: Cities/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            City city = db.Cities.Find(id);
+            if (city == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CityID = new SelectList(db.Cities, "CityID", "Name", acc.CityID);
-            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", city.StateID);
+            return View(city);
         }
 
-        // POST: Accs/Edit/5
+        // POST: Cities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Edit([Bind(Include = "CityID,StateID,Name")] City city)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(acc).State = EntityState.Modified;
+                db.Entry(city).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CityID = new SelectList(db.Cities, "CityID", "Name", acc.CityID);
-            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", acc.CompanyID);
-            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", acc.StateID);
-            return View(acc);
+            ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", city.StateID);
+            return View(city);
         }
 
-        // GET: Accs/Delete/5
+        // GET: Cities/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acc acc = db.Accs.Find(id);
-            if (acc == null)
+            City city = db.Cities.Find(id);
+            if (city == null)
             {
                 return HttpNotFound();
             }
-            return View(acc);
+            return View(city);
         }
 
-        // POST: Accs/Delete/5
+        // POST: Cities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Acc acc = db.Accs.Find(id);
-            db.Accs.Remove(acc);
+            City city = db.Cities.Find(id);
+            db.Cities.Remove(city);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

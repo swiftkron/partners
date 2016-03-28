@@ -40,7 +40,7 @@ namespace Partners.Controllers
         // GET: Units/Create
         public ActionResult Create()
         {
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title");
+            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title");
             ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr");
             return View();
         }
@@ -59,7 +59,7 @@ namespace Partners.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", unit.CompanyID);
+            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", unit.CompanyID);
             ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", unit.StateID);
             return View(unit);
         }
@@ -76,7 +76,7 @@ namespace Partners.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", unit.CompanyID);
+            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", unit.CompanyID);
             ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", unit.StateID);
             return View(unit);
         }
@@ -94,7 +94,7 @@ namespace Partners.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CompanyID = new SelectList(db.Companys, "CompanyID", "Title", unit.CompanyID);
+            ViewBag.CompanyID = new SelectList(db.Companies, "CompanyID", "Title", unit.CompanyID);
             ViewBag.StateID = new SelectList(db.States, "StateID", "Abbr", unit.StateID);
             return View(unit);
         }

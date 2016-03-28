@@ -7,13 +7,13 @@ namespace Partners.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ChangePartnerTypetoInt : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangePartnerTypetoInt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603080307465_ChangePartnerTypetoInt"; }
+            get { return "201603282241136_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

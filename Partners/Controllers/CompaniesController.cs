@@ -18,7 +18,7 @@ namespace Partners.Controllers
         // GET: Companies
         public ActionResult Index()
         {
-            return View(db.Companys.ToList());
+            return View(db.Companies.ToList());
         }
 
         // GET: Companies/Details/5
@@ -28,7 +28,7 @@ namespace Partners.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companys.Find(id);
+            Company company = db.Companies.Find(id);
             if (company == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace Partners.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Companys.Add(company);
+                db.Companies.Add(company);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Partners.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companys.Find(id);
+            Company company = db.Companies.Find(id);
             if (company == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Partners.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companys.Find(id);
+            Company company = db.Companies.Find(id);
             if (company == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Partners.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Company company = db.Companys.Find(id);
-            db.Companys.Remove(company);
+            Company company = db.Companies.Find(id);
+            db.Companies.Remove(company);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

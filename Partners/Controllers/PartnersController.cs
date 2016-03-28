@@ -44,8 +44,9 @@ namespace Partners.Controllers
                 var country = CountryID.Value;
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs
-                              join co in db.Companys on acc.CompanyID equals co.CompanyID
+                              join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
+                              join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
                               where acc.StateID == state
                               select new CompanyData
@@ -60,7 +61,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
-                                  City = acc.City,
+                                  City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
@@ -74,12 +75,12 @@ namespace Partners.Controllers
                     State = st.Name,
                 }).ToList();
 
-                var my_cities = (from st in db.States
-                                 join acc in db.Accs on st.StateID equals acc.StateID
-                                  where st.StateID == state
+                var my_cities = (from city in db.Cities
+                                 join st in db.States on city.StateID equals st.StateID
+                                 where city.StateID == state
                                   select new CityData
                                   {
-                                      City = acc.City
+                                      City = city.Name
                                   }).ToList();
 
                 viewModel.CountryData = my_country;
@@ -93,8 +94,9 @@ namespace Partners.Controllers
             if (Select == 1)
             {
                 var c_data = (from acc in db.Accs
-                              join co in db.Companys on acc.CompanyID equals co.CompanyID
+                              join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
+                              join city in db.Cities on acc.CityID equals city.CityID
                               where acc.Select == 1
                               select new CompanyData
                               {
@@ -107,7 +109,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
-                                  City = acc.City,
+                                  City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
@@ -121,8 +123,9 @@ namespace Partners.Controllers
             {
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs
-                              join co in db.Companys on acc.CompanyID equals co.CompanyID
+                              join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
+                              join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
                               where acc.StateID == state && acc.Select == 1
                               select new CompanyData
@@ -137,7 +140,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
-                                  City = acc.City,
+                                  City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
@@ -150,8 +153,9 @@ namespace Partners.Controllers
             if (PremierTrainer == 1)
             {
                 var c_data = (from acc in db.Accs
-                              join co in db.Companys on acc.CompanyID equals co.CompanyID
+                              join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
+                              join city in db.Cities on acc.CityID equals city.CityID
                               where acc.PremierTrainer == 1
                               select new CompanyData
                               {
@@ -164,7 +168,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
-                                  City = acc.City,
+                                  City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
@@ -178,8 +182,9 @@ namespace Partners.Controllers
             {
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs
-                              join co in db.Companys on acc.CompanyID equals co.CompanyID
+                              join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
+                              join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
                               where acc.StateID == state && acc.PremierTrainer == 1
                               select new CompanyData
@@ -194,7 +199,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
-                                  City = acc.City,
+                                  City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
