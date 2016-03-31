@@ -34,7 +34,7 @@ namespace Partners.Controllers
                     Abbr = state.Abbr
                 }).ToList();
 
-                viewModel.StateData = state_data;
+                viewModel.StateData = state_data.OrderBy(state => state.State);
 
             }
 
@@ -61,6 +61,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
+                                  CityID = city.CityID,
                                   City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
@@ -80,6 +81,7 @@ namespace Partners.Controllers
                                  where city.StateID == state
                                   select new CityData
                                   {
+                                      CityID = city.CityID,
                                       City = city.Name
                                   }).ToList();
 
@@ -91,8 +93,9 @@ namespace Partners.Controllers
             }
 
             // Get Partners by Select Certification
-            if (Select == 1)
+            if ((StateID == null) && (Select == 1))
             {
+                //var country = CountryID.Value;
                 var c_data = (from acc in db.Accs
                               join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
@@ -109,11 +112,20 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
+                                  CityID = city.CityID,
                                   City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
+                //var my_country = (from ctry in db.Countries
+                //                  where ctry.CountryID == country
+                //                  select new CountryData
+                //                  {
+                //                      CountryName = ctry.CountryName
+                //                  }).ToList();
 
+                //viewModel.CountryData = my_country;
+                viewModel.StateData = null;
                 viewModel.CompanyData = c_data.OrderByDescending(c => c.UUM);
 
             }
@@ -140,6 +152,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
+                                  CityID = city.CityID,
                                   City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
@@ -150,8 +163,9 @@ namespace Partners.Controllers
             }
 
             // Get Premier Trainers
-            if (PremierTrainer == 1)
+            if ((StateID == null) && (PremierTrainer == 1))
             {
+                //var country = CountryID.Value;
                 var c_data = (from acc in db.Accs
                               join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
@@ -168,11 +182,20 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
+                                  CityID = city.CityID,
                                   City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();
 
+                //var my_country = (from ctry in db.Countries
+                //                  where ctry.CountryID == country
+                //                  select new CountryData
+                //                  {
+                //                      CountryName = ctry.CountryName
+                //                  }).ToList();
 
+                //viewModel.CountryData = my_country;
+                viewModel.StateData = null;
                 viewModel.CompanyData = c_data.OrderByDescending(c => c.UUM);
 
             }
@@ -199,6 +222,7 @@ namespace Partners.Controllers
                                   LastName = acc.LastName,
                                   Email = acc.Email,
                                   YearCertified = acc.YearCertified,
+                                  CityID = city.CityID,
                                   City = city.Name,
                                   Abbr = st.Abbr
                               }).ToList();

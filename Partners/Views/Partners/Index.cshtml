@@ -5,14 +5,24 @@
 }
 
 <style type="text/css">
+    #sel, #apt{display:none;}
 </style>
 @if (Model.CompanyData != null)
-    {
-        <style type="text/css">
-            .search{display:none;}
-        </style>
-    }
-
+{
+    <style type="text/css">
+        .search {
+            display: none;
+        }
+    </style>
+}
+@if (Model.CountryData == null)
+{
+    <style type="text/css">
+        .citySearch h3{
+            border-bottom:none;
+        }
+    </style>
+}
 
 <script type="text/javascript">
     // Get URL Parameters
@@ -31,17 +41,17 @@
         $('#allCities').click(function () {
             $('.company').show();
         })
-        $('#select').click(function () {
-            $('#partnerSelect').submit();
-        });
-        $('#apt').click(function () {
-            $('#partnerSelect').submit();
-        });
         $('#countrySelect').change(function () {
             $('#partnerSelect').submit();
         });
         $('#getCountry').val(cid);
         $('#getState').val(sid);
+        if (sel == "1") {
+            $('#sel').css('display', 'inline');
+        }
+        if (apt == "1") {
+            $('#apt').css('display', 'inline');
+        }
     });
 </script>
 
@@ -59,8 +69,8 @@
                 <form id="partnerSelect" action="/partners/" method="get">
                     <h3>Select A Country</h3>
                     <select name="CountryID" id="countrySelect">
-                       <option id="getCountry"></option>
-                                
+                        <option id="getCountry"></option>
+
                         @foreach (var country in Model.Countries)
                         {
                             <option value="@country.CountryID">@country.CountryName</option>
@@ -78,12 +88,11 @@
                         </select>
                     }
                     <h3>Select the type(s) of ACC you&rsquo;re looking for</h3>
-                        <div><input id="select" type="checkbox" name="All" value="1" /> <label>All Certified Consultants</label></div>
-                        <div><input type="checkbox" name="Select" value="1" /> <label>Select Certified Consultants</label></div>
-                        <div><input type="checkbox" name="PremierTrainer" value="1" /> <label>Premier Trainers (U.S. Only)</label></div>
+                    <div><input type="checkbox" name="Select" value="1" /> <label>Select Certified Consultants</label></div>
+                    <div><input type="checkbox" name="PremierTrainer" value="1" /> <label>Premier Trainers (U.S. Only)</label></div>
 
                     <input type="submit" class="btnBlue" value="Search" />
-</form>
+                </form>
             </div>
 
             <div class="col-3"></div>
@@ -91,35 +100,45 @@
     </div>
 </div>
 
+
 @if (Model.CompanyData != null)
 {
     <div class="partnerContainer">
         <div class="outer bg_lightblue citySearch">
             <div class="container inner text-center">
                 <h3>
-                    @foreach (var country in Model.CountryData)
-                    {
-                        @country.CountryName;
+                    @if (Model.CountryData != null) { 
+                        foreach (var country in Model.CountryData)
+                        {
+                            @country.CountryName;
+                        }
                     }
-                    &nbsp;|&nbsp; 
-                    @foreach (var state in Model.StateData)
+                    @if (Model.StateData != null)
                     {
-                        @state.State;
+                        foreach (var state in Model.StateData)
+                        {
+                            <span>&nbsp;|&nbsp;</span> <strong>@state.State</strong>
+                        }
                     }
+                    <span id="sel">Select Certified Consultants</span>
+                    <span id="apt">Premier Trainers</span>
                     <a class="newSearch" href="/partners?CountryID=1">&times; New Search</a>
                 </h3>
-                <div class="col-4 city"><a href="#" id="allCities">All Cities</a></div>
-                @foreach (var city in Model.CityData)
+                @if (Model.CityData != null)
                 {
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#@city.City').click(function () {
-                                $('.company').hide();
-                                $('.@city.City').show();
-                            })
-                        });
-                    </script>
-                    <div class="col-4 city"><a href="#" id="@city.City">@city.City</a></div>
+                    <div class="col-4 city"><a href="#" id="allCities">All Cities</a></div>
+                    foreach (var city in Model.CityData)
+                    {
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#cty_@city.CityID').click(function () {
+                                    $('.company').hide();
+                                    $('.@city.CityID').show();
+                                })
+                            });
+                        </script>
+                        <div class="col-4 city"><a href="#" id="cty_@city.CityID">@city.City</a></div>
+                    }
                 }
             </div>
         </div>
@@ -127,7 +146,7 @@
             <div class="container inner">
                 @foreach (var company in Model.CompanyData)
                 {
-                    <div class="row company @company.City">
+                    <div class="row company @company.CityID">
                         <div class="col-3">
                             <h3>@company.FirstName @company.LastName</h3>
                             <p>@company.City, @company.Abbr<br /><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
@@ -136,7 +155,7 @@
                             <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
                         </div>
                         <div class="col-3">
-                            <img src="http://www.act.com/images/default-source/partner-logos/diamondsm.png" />
+                            <img class="partnerIcon" src="http://www.act.com/images/default-source/partner-logos/@(company.Tier).png" />
                         </div>
                     </div>
                 }
