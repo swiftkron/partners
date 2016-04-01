@@ -1,4 +1,8 @@
-﻿/* GLYPHICONS */
+﻿.black{
+    color:#2a353d !important;
+}
+
+/* GLYPHICONS */
 @font-face {
   font-family: 'Glyphicons Halflings';
 
@@ -1452,10 +1456,10 @@ input:focus {
 @import url(https://fast.fonts.net/cssapi/2b711b0d-fbe0-4a83-80e8-86e2497fcbcb.css);
 
 /* _ colors _ */
-.orange{color:#FE5000;}
-.text-grey{color:#526774;}
-.dark-grey{color:#39464F;}
-.white{color:#FFF;}
+.orange{color:#FE5000 !important;}
+.text-grey{color:#526774 !important;}
+.dark-grey{color:#39464F !important;}
+.white{color:#FFF !important;}
 .bg_orange{
     background-color:#FE5000;
     color:#FFF;
@@ -1473,13 +1477,13 @@ input:focus {
     background-color: #008cc5;
     color: #FFF;
 }
-.bg_blue a{
+/*.bg_blue a{
     color:#FFF;
     font-family:'HelveticaNeueW01-75Bold',Helvetica,Arial,sans serif;
 }
 .bg_blue a:hover{
     color:#91d5ff;
-}
+}*/
 .bg_white{
     background-color:#FFF;
     color:#526774;
@@ -2759,8 +2763,16 @@ iframe#chatFrame {
         }
 
             .hp:nth-child(even) {
-        background: #f5f5f5;
+        /*background: #f7f9fa;*/
+        border-top: #f7f9fa 2px solid;
+        border-bottom:#f7f9fa 2px solid;
     }
+            .hp:nth-child(even) img{
+            /*border: #f7f9fa 2px solid;
+	        -webkit-border-radius: 8px;    
+	        -moz-border-radius: 8px;
+	        border-radius: 8px;*/
+            }
 
     .inner ul {
         list-style-type: none;
@@ -2775,6 +2787,9 @@ iframe#chatFrame {
         content: '- ';
     }
 
+    .hpTitle h2{
+        /*padding-top:12px;*/
+    }
     .hpTitle h2, .hpTitle p {
         margin: 0 0 .1em 0;
     }
@@ -2804,4 +2819,33 @@ iframe#chatFrame {
 .partnerIcon{
     max-width:75px;
     max-height:75px;
+}
+
+/* HOME PAGE */
+.typeDesc{
+    padding:0 48px;
+}
+h3{
+    font-size:1.2em;
+}
+.bg_green{
+    background:#00b19e;
+}
+.bg_green{
+    font-size:1.25em;
+}
+.lgQuote{
+    font-size:180px !important;
+    line-height:0;
+    padding-top:72px;
+}
+.byline{
+    float:right;
+    font-size:14px;
+    line-height:1.2em;
+    text-align:right;
+}
+.bg_steel{
+    background:#778a9d;
+    color:#FFF;
 }
