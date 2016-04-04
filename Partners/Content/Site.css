@@ -2692,6 +2692,10 @@ iframe#chatFrame {
     padding:0;
 }
 /* PARTNERS */
+.bold{
+    color:#2a353d;
+    font-weight:bold;
+}
     .search {
         background:#FFF url(/Content/img/map.png) center center no-repeat;
         padding:24px 0;
@@ -2717,7 +2721,6 @@ iframe#chatFrame {
     }
     .citySearch a{
         color:#2a353d;
-        font-weight:bold;
     }
     .citySearch h3{
         text-align:left;
@@ -2732,6 +2735,7 @@ iframe#chatFrame {
     .newSearch{
         font-size:14px;
         float:right;
+        padding-top:6px;
     }
     .company {
         padding: 2em;

@@ -17,7 +17,7 @@ namespace Partners.Controllers
         private PartnerContext db = new PartnerContext();
 
         // GET: State
-        public ActionResult Index(int? CountryID, int? StateID, int? Select, int? PremierTrainer)
+        public ActionResult Index(int? CountryID, int? StateID, int? AccType)
         {
             var viewModel = new PartnerModel();
 
@@ -93,7 +93,7 @@ namespace Partners.Controllers
             }
 
             // Get Partners by Select Certification
-            if ((StateID == null) && (Select == 1))
+            if ((StateID == null) && (AccType == 1))
             {
                 //var country = CountryID.Value;
                 var c_data = (from acc in db.Accs
@@ -131,7 +131,7 @@ namespace Partners.Controllers
             }
 
             // Get Partners by Select Certification by State
-            if ((StateID != null) && (Select == 1))
+            if ((StateID != null) && (AccType == 1))
             {
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs
@@ -163,7 +163,7 @@ namespace Partners.Controllers
             }
 
             // Get Premier Trainers
-            if ((StateID == null) && (PremierTrainer == 1))
+            if ((StateID == null) && (AccType == 2))
             {
                 //var country = CountryID.Value;
                 var c_data = (from acc in db.Accs
@@ -201,7 +201,7 @@ namespace Partners.Controllers
             }
 
             // Get Premier Trainers by State
-            if ((StateID != null) && (PremierTrainer == 1))
+            if ((StateID != null) && (AccType == 2))
             {
                 var state = StateID.Value;
                 var c_data = (from acc in db.Accs

@@ -6,6 +6,7 @@
 
 <style type="text/css">
     #sel, #apt{display:none;}
+    .loc-187{display:none;}
 </style>
 @if (Model.CompanyData != null)
 {
@@ -34,23 +35,36 @@
     }
     var cid = getParameterByName('CountryID');
     var sid = getParameterByName('StateID');
-    var sel = getParameterByName('Select');
-    var apt = getParameterByName('PremierTrainer');
+    var type = getParameterByName('AccType');
     // Submit form onchange
     $(document).ready(function () {
         $('#allCities').click(function () {
             $('.company').show();
+            $('.city a').removeClass('bold');
+            $('#allCities').addClass('bold');
         })
         $('#countrySelect').change(function () {
             $('#partnerSelect').submit();
         });
         $('#getCountry').val(cid);
         $('#getState').val(sid);
-        if (sel == "1") {
-            $('#sel').css('display', 'inline');
+        // Show country selected in select box
+        if (!(cid == null || cid == "")){
+            //alert('The CountryID is' + cid);
+            $('#countrySelect option[value=' + cid + ']').attr('selected','selected');
         }
-        if (apt == "1") {
-            $('#apt').css('display', 'inline');
+        // Select and APT filters
+        $('#filterAll').attr('href', '/partners?CountryID=' + cid + '&StateID=' + sid + '')
+        $('#filterSel').attr('href', '/partners?CountryID=' + cid + '&StateID=' + sid + '&AccType=1')
+        $('#filterApt').attr('href', '/partners?CountryID=' + cid + '&StateID=' + sid + '&AccType=2')
+        if (type == "1") {
+            $('#filterSel').addClass('bold');
+        }
+        else if (type == "2") {
+            $('#filterApt').addClass('bold');
+        }
+        else {
+            $('#filterAll').addClass('bold');
         }
     });
 </script>
@@ -80,7 +94,6 @@
                     {
                         <h3>Select A State</h3>
                         <select name="StateID" id="stateSelect">
-                            <option id="getState" />
                             @foreach (var state in Model.StateData)
                             {
                                 <option value="@state.StateID">@state.State</option>
@@ -88,8 +101,9 @@
                         </select>
                     }
                     <h3>Select the type(s) of ACC you&rsquo;re looking for</h3>
-                    <div><input type="checkbox" name="Select" value="1" /> <label>Select Certified Consultants</label></div>
-                    <div><input type="checkbox" name="PremierTrainer" value="1" /> <label>Premier Trainers (U.S. Only)</label></div>
+                    <div><input type="radio" name="AccType" value="1" /> <label>Select Certified Consultants</label></div>
+                    <div><input type="radio" name="AccType" value="2" /> <label>Premier Trainers (U.S. Only)</label></div>
+                    <div><input type="radio" name="AccType" value="" checked /> <label>All ACCs</label></div>
 
                     <input type="submit" class="btnBlue" value="Search" />
                 </form>
@@ -117,12 +131,12 @@
                     {
                         foreach (var state in Model.StateData)
                         {
-                            <span>&nbsp;|&nbsp;</span> <strong>@state.State</strong>
+                            <span>&nbsp;|&nbsp;</span> <strong class="black">@state.State</strong>
                         }
                     }
-                    <span id="sel">Select Certified Consultants</span>
-                    <span id="apt">Premier Trainers</span>
-                    <a class="newSearch" href="/partners?CountryID=1">&times; New Search</a>
+                    @*<span id="sel">Select Certified Consultants</span>
+                    <span id="apt">Premier Trainers</span>*@
+                    <span class="newSearch"><a id="filterAll" href="">All Certified Consultants</a> | <a id="filterSel" href="">Select Certified Consultants</a> | <a id="filterApt" href="">Premier Trainers</a> | <a href="/partners?CountryID=1">&times; New Search</a></span>
                 </h3>
                 @if (Model.CityData != null)
                 {
@@ -130,12 +144,14 @@
                     foreach (var city in Model.CityData)
                     {
                         <script type="text/javascript">
-                            $(document).ready(function () {
-                                $('#cty_@city.CityID').click(function () {
-                                    $('.company').hide();
-                                    $('.@city.CityID').show();
-                                })
-                            });
+    $(document).ready(function () {
+        $('#cty_@city.CityID').click(function () {
+            $('.city a').removeClass('bold');
+            $('#cty_@city.CityID').addClass('bold');
+            $('.company').hide();
+            $('.@city.CityID').show();
+        })
+    });
                         </script>
                         <div class="col-4 city"><a href="#" id="cty_@city.CityID">@city.City</a></div>
                     }
@@ -149,7 +165,7 @@
                     <div class="row company @company.CityID">
                         <div class="col-3">
                             <h3>@company.FirstName @company.LastName</h3>
-                            <p>@company.City, @company.Abbr<br /><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
+                            <p><span class="loc-@company.CityID">@company.City, @company.Abbr<br /></span><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
                         </div>
                         <div class="col-6 text-center">
                             <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
