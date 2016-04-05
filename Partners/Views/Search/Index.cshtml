@@ -1,0 +1,119 @@
+﻿@model Partners.ViewModels.PartnerModel
+
+@{
+    ViewBag.Title = "Find a Partner";
+}
+
+<style type="text/css">
+    #sel, #apt{display:none;}
+    .loc-187{display:none;}
+</style>
+@if (Model.CompanyData != null)
+{
+    <style type="text/css">
+        .search {
+            display: none;
+        }
+    </style>
+}
+@if (Model.CountryData == null)
+{
+    <style type="text/css">
+        .citySearch h3{
+            border-bottom:none;
+        }
+    </style>
+}
+
+<script type="text/javascript">
+    // Get URL Parameters
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var cid = getParameterByName('CountryID');
+    var sid = getParameterByName('StateID');
+    var tid = getParameterByName('AccType');
+    // Submit form onchange
+    $(document).ready(function () {
+        $('#countrySelect').change(function () {
+            $('#partnerSelect').submit();
+        });
+        $('#getCountry').val(cid);
+        $('#getState').val(sid);
+        // Show country selected in select box
+        if (!(cid == null || cid == "")){
+            $('#countrySelect option[value=' + cid + ']').attr('selected','selected');
+        }
+        // PreSelect ACC Type
+        if (tid == "1") {
+            $('#AccType1').attr('checked', 'checked');
+        }
+        else if (tid == "2") {
+            $('#AccType2').attr('checked', 'checked');
+        }
+        else {
+            $('#AccType0').attr('checked', 'checked');
+        }
+        // Check for State Selection before submitting form
+        $('#SearchAccs').click(function () {
+            thisstate = $('#stateSelect').val();
+            if (!(thisstate == null || thisstate == "49")) {
+                $('#partnerSelect').attr('action', 'partners');
+                $('#partnerSelect').submit();
+            }
+            else {
+                alert('Select the state you want to search');
+            }
+        });
+    });
+</script>
+
+<div class="outer bg_blue">
+    <div class="container">
+        <h1 class="text-center">Find an Act! Certified Consultant</h1>
+    </div>
+</div>
+
+<div class="outer search">
+    <div class="container">
+        <div class="row inner">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form id="partnerSelect" action="" method="get">
+                    <h3>Select A Country</h3>
+                    <select name="CountryID" id="countrySelect">
+                        <option id="getCountry"></option>
+
+                        @foreach (var country in Model.Countries)
+                        {
+                            <option value="@country.CountryID">@country.CountryName</option>
+                        }
+                    </select>
+                    @if (Model.StateData != null)
+                    {
+                        <h3>Select A State</h3>
+                        <select name="StateID" id="stateSelect">
+                            @foreach (var state in Model.StateData)
+                            {
+                                <option value="@state.StateID">@state.State</option>
+                            }
+                        </select>
+                    }
+                    <h3>Select the type(s) of ACC you&rsquo;re looking for</h3>
+                    <div><input type="radio" id="AccType1" name="AccType" value="1" /> <label>Select Certified Consultants</label></div>
+                    <div><input type="radio" id="AccType0" name="AccType" /> <label>All ACCs</label></div>
+                    <div><input type="radio" id="AccType2" name="AccType" value="2" /> <label>Premier Trainers (U.S. Only)</label></div>
+
+                    <input id="SearchAccs" type="submit" class="btnBlue" value="Search" />
+                </form>
+            </div>
+
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+
+

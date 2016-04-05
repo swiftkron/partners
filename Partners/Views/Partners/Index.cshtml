@@ -1,7 +1,7 @@
 ﻿@model Partners.ViewModels.PartnerModel
 
 @{
-    ViewBag.Title = "Find a Partner";
+    ViewBag.Title = "Act! Certified Consultants";
 }
 
 <style type="text/css">
@@ -71,46 +71,7 @@
 
 <div class="outer bg_blue">
     <div class="container">
-        <h1 class="text-center">Find an Act! Certified Consultant</h1>
-    </div>
-</div>
-
-<div class="outer search">
-    <div class="container">
-        <div class="row inner">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <form id="partnerSelect" action="/partners/" method="get">
-                    <h3>Select A Country</h3>
-                    <select name="CountryID" id="countrySelect">
-                        <option id="getCountry"></option>
-
-                        @foreach (var country in Model.Countries)
-                        {
-                            <option value="@country.CountryID">@country.CountryName</option>
-                        }
-                    </select>
-                    @if (Model.StateData != null)
-                    {
-                        <h3>Select A State</h3>
-                        <select name="StateID" id="stateSelect">
-                            @foreach (var state in Model.StateData)
-                            {
-                                <option value="@state.StateID">@state.State</option>
-                            }
-                        </select>
-                    }
-                    <h3>Select the type(s) of ACC you&rsquo;re looking for</h3>
-                    <div><input type="radio" name="AccType" value="1" /> <label>Select Certified Consultants</label></div>
-                    <div><input type="radio" name="AccType" value="2" /> <label>Premier Trainers (U.S. Only)</label></div>
-                    <div><input type="radio" name="AccType" value="" checked /> <label>All ACCs</label></div>
-
-                    <input type="submit" class="btnBlue" value="Search" />
-                </form>
-            </div>
-
-            <div class="col-3"></div>
-        </div>
+        <h1 class="text-center">Act! Certified Consultants</h1>
     </div>
 </div>
 
@@ -136,7 +97,7 @@
                     }
                     @*<span id="sel">Select Certified Consultants</span>
                     <span id="apt">Premier Trainers</span>*@
-                    <span class="newSearch"><a id="filterAll" href="">All Certified Consultants</a> | <a id="filterSel" href="">Select Certified Consultants</a> | <a id="filterApt" href="">Premier Trainers</a> | <a href="/partners?CountryID=1">&times; New Search</a></span>
+                    <span class="newSearch"><a id="filterAll" href="">All Certified Consultants</a> | <a id="filterSel" href="">Select Certified Consultants</a> | <a id="filterApt" href="">Premier Trainers</a> | <a href="/search?CountryID=1">&times; New Search</a></span>
                 </h3>
                 @if (Model.CityData != null)
                 {

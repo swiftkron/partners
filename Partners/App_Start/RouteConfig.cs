@@ -21,7 +21,12 @@ namespace Partners
             routes.MapRoute(
                 name: "Partners",
                 url: "{controller}/{action}/{CountryID}/{StateID}/{id}",
-                defaults: new { controller = "Partners", action="Index", CountryID = UrlParameter.Optional, StateID = UrlParameter.Optional, id=UrlParameter.Optional }
+                defaults: new { controller = "Partners", action="Index", CountryID = UrlParameter.Optional, StateID = UrlParameter.Optional, AccType = UrlParameter.Optional, id=UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Search",
+                url: "{controller}/{action}/{CountryID}/{StateID}/{id}",
+                defaults: new { controller = "Partners", action = "Index", CountryID = UrlParameter.Optional, StateID = UrlParameter.Optional, id = UrlParameter.Optional }
             );
         }
     }
