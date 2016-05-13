@@ -20,16 +20,15 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <script>
-(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-            new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-KW52GZ');</script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KW52GZ');</script>
     <!-- End Google Tag Manager -->
-
     <!-- HEADER -->
     <div class="navigation">
         <!-- UTILITY NAV -->
@@ -44,8 +43,8 @@
                             <li class="uTrial"><a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month">Free Trial</a></li>
                             <li><a href="tel:1-866-873-2006">866-873-2006</a></li>
                             <span class="separator"></span>
-                            <li><a href="http://www.act.com/au/">Australia</a></li>
                             <li><a href="http://www.act.com/en-uk/">International English</a></li>
+                            <li><a href="http://www.act.com/au/">Australia/New Zealand</a></li>
                             <li><a href="http://www.act.com/de-de/">Deutch</a></li>
                             <li><a href="http://www.act.com/fr-fr/">Fran&ccedil;ais</a></li>
                             <li><a href="http://www.act.com/fr-ca/">Fran&ccedil;ais Canada</a></li>
@@ -62,8 +61,8 @@
                             <span class="glyphicon glyphicon-globe" title="Language"></span>
                             <span>&#9662;</span>
                             <ul class="uDropdown lang">
-                                <li><a href="http://www.act.com/au/">Australia</a></li>
                                 <li><a href="http://www.act.com/en-uk/">International English</a></li>
+                                <li><a href="http://www.act.com/au/">Australia/New Zealand</a></li>
                                 <li><a href="http://www.act.com/de-de/">Deutch</a></li>
                                 <li><a href="http://www.act.com/fr-fr/">Fran&ccedil;ais</a></li>
                                 <li><a href="http://www.act.com/fr-ca/">Fran&ccedil;ais Canada</a></li>
@@ -114,14 +113,18 @@
                         <li><a href="http://www.act.com/resources/act-emarketing-getting-started">Act! emarketing Resources</a></li>
                         <li><a href="https://actcloud1.zendesk.com/hc/en-us" target="_blank">Act! Essentials Resources</a></li>
                         <li><a href="http://www.act.com/resources/getting-started">Act! Premium Getting Started</a></li>
+                        <li><a href="http://www.act.com/resources/getting-started">Act! Premium Getting Started</a></li>
+                        <li><a href="http://community.act.com" target="_blank">Community Resources</a></li>
+                        <li><a href="http://www.act.com/resources/api">Act! API Resources</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="/">Partners</a>
                     <ul>
-                        <li><a href="/search?CountryID=1">Find an ACC</a></li>
+                        <li><a href="/search?CountryID=1">Find an Act! Certified Consultant</a></li>
                         <li><a href="/hostingproviders">Hosting Providers</a></li>
                         <li><a href="/distributors">Distributors</a></li>
+                        <li><a href="/developmentpartnerprogram">Development Partner Program</a></li>
                         <li><a href="/becomeanacc">Become an Act! Certified Consultant</a></li>
                         <li><a href="/affiliateprogram">Affiliate Partner Program</a></li>
                     </ul>
@@ -138,7 +141,7 @@
                 </li>
             </ul>
         </nav>
-    </div>   
+    </div>
 
     @RenderBody()
 
