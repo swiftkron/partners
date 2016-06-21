@@ -7,7 +7,13 @@
     <title>@ViewBag.Title - Act! Partners</title>
     @Styles.Render("~/Content/css")
     <script src="http://www.act.com/js/jquery.min.js"></script>
-    <script src="~/Scripts/utilitynav.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="~/Content/glyphicons.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/grid.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/standard.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/footer.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/header.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/partners.css" type="text/css" rel="stylesheet" />
     <link rel="icon"
           type="image/x-icon"
           href="~/favicon.ico?v=1">
@@ -30,51 +36,39 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KW52GZ');</script>
     <!-- End Google Tag Manager -->
     <!-- HEADER -->
-    <div class="navigation">
-        <!-- UTILITY NAV -->
-        <div class="outer bg_white">
+    <header>
+        <div class="utility">
             <div class="container">
-                <div class="navLink"></div>
-                <div class="utility">
-                    <div class="uToggle">
-                        <span class="glyphicon glyphicon-chevron-down"></span>
-                        <ul class="uDropdown uAlt">
-                            <li class="uLogin"><a href="https://mycloud.act.com/#/login">Login</a></li>
-                            <li class="uTrial"><a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month">Free Trial</a></li>
-                            <li><a href="tel:1-866-873-2006">866-873-2006</a></li>
-                            <span class="separator"></span>
-                            <li><a href="http://www.act.com/en-uk/">International English</a></li>
-                            <li><a href="http://www.act.com/au/">Australia/New Zealand</a></li>
-                            <li><a href="http://www.act.com/de-de/">Deutch</a></li>
-                            <li><a href="http://www.act.com/fr-fr/">Fran&ccedil;ais</a></li>
-                            <li><a href="http://www.act.com/fr-ca/">Fran&ccedil;ais Canada</a></li>
-                            <li><a href="http://www.act.com/nl-nl/">Netherlands</a></li>
-                        </ul>
+                <!-- logo -->
+                <div class="brand">
+                    <a href="http://act.com" class="logo"><img src="http://www.act.com/images/default-source/default-album/act-logo-circle" alt="Act!" /></a>
+                </div>
+                <!-- cta -->
+                <div class="trial">
+                    <a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month" target="_blank" class="button button_white">Free trial</a>
+                </div>
+                <!-- phone -->
+                <div class="phone">
+                    <a href="tel:866-873-2006">866-873-2006</a>
+                </div>
+                <!-- regions -->
+                <div class="language">
+                    <div class="intl">
+                        <span class="glyphicon glyphicon-globe"></span>
                     </div>
-                    <div class="uBrand" title="Act!"></div>
-                    <div class="uToggleElements">
-                        <div class="uTrial">
-                            <a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month"><span class="button btnSecondary">Free trial</span></a>
-                        </div>
-                        <div class="uPhone"><a href="tel:1-866-873-2006">866-873-2006</a></div>
-                        <div class="uIntl">
-                            <span class="glyphicon glyphicon-globe" title="Language"></span>
-                            <span>&#9662;</span>
-                            <ul class="uDropdown lang">
-                                <li><a href="http://www.act.com/en-uk/">International English</a></li>
-                                <li><a href="http://www.act.com/au/">Australia/New Zealand</a></li>
-                                <li><a href="http://www.act.com/de-de/">Deutch</a></li>
-                                <li><a href="http://www.act.com/fr-fr/">Fran&ccedil;ais</a></li>
-                                <li><a href="http://www.act.com/fr-ca/">Fran&ccedil;ais Canada</a></li>
-                                <li><a href="http://www.act.com/nl-nl/">Netherlands</a></li>
-                            </ul>
-                        </div>
-                        <div class="uLogin"><a href="https://mycloud.act.com/#/login"><span class="glyphicon glyphicon-user" title="Login"></span></a></div>
-                    </div>
+                    <ul class="regions">
+                        <li class="mobile"><a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month">Free trial</a></li>
+                        <li><a href="http://act.com/en-uk/">International English</a></li>
+                        <li><a href="http://act.com/au/">Australia/New Zealand</a></li>
+                        <li><a href="http://act.com/de-de/">Deutsch</a></li>
+                        <li><a href="http://act.com/fr-fr/">Fran&ccedil;ais</a></li>
+                        <li><a href="http://act.com/fr-ca/">Fran&ccedil;ais Canada</a></li>
+                        <li><a href="http://act.com/nl-nl/">Nederlands</a></li>
+                        <li><a href="http://act.com/pl-pl/">Polski</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- MAIN NAV -->
         <div class="navToggle">
             <div class="hamburger">
                 <span class="menubar"></span>
@@ -83,146 +77,135 @@
             </div>
         </div>
         <nav>
-            <ul id="main-nav">
-                <li>
-                    <a href="http://www.act.com/why-act">Why Act!</a>
-                    <ul>
-                        <li><a href="http://www.act.com/why-act/get-organized">Get Organized</a></li>
-                        <li><a href="http://www.act.com/why-act/know-my-customers">Know My Customers</a></li>
-                        <li><a href="http://www.act.com/why-act/market-my-business">Market My Business</a></li>
-                        <li><a href="http://www.act.com/why-act/drive-sales">Drive Sales</a></li>
-                        <li><a href="http://www.act.com/why-act/understand-my-business">Understand My Business</a></li>
-                        <li><a href="http://www.act.com/why-act/customer-success">Customer Successes</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="http://www.act.com/products">Products</a>
-                    <ul>
-                        <li><a href="http://www.act.com/products">Act! Premium</a></li>
-                        <li><a href="http://www.act.com/products/act-pro">Act! Pro</a></li>
-                        <li><a href="http://www.act.com/products/act-emarketing">Act! emarketing</a></li>
-                        <li><a href="http://www.act.com/products/act-essentials">Act! Essentials</a></li>
-                        <li><a href="http://www.act.com/products/whats-new">What&rsquo;s New</a></li>
-                    </ul>
-                </li>
-                <li><a href="http://www.act.com/pricing">Pricing</a></li>
-                <li>
-                    <a href="http://www.act.com/resources">Customer Resources</a>
-                    <ul>
-                        <li><a href="http://www.act.com/resources">Act! Premium Resources</a></li>
-                        <li><a href="http://www.act.com/resources/act-emarketing-getting-started">Act! emarketing Resources</a></li>
-                        <li><a href="https://actcloud1.zendesk.com/hc/en-us" target="_blank">Act! Essentials Resources</a></li>
-                        <li><a href="http://www.act.com/resources/getting-started">Act! Premium Getting Started</a></li>
-                        <li><a href="http://www.act.com/resources/getting-started">Act! Premium Getting Started</a></li>
-                        <li><a href="http://community.act.com" target="_blank">Community Resources</a></li>
-                        <li><a href="http://www.act.com/resources/api">Act! API Resources</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/">Partners</a>
-                    <ul>
-                        <li><a href="/search?CountryID=1">Find an Act! Certified Consultant</a></li>
-                        <li><a href="/hostingproviders">Hosting Providers</a></li>
-                        <li><a href="/distributors">Distributors</a></li>
-                        <li><a href="/developmentpartnerprogram">Development Partner Program</a></li>
-                        <li><a href="/becomeanacc">Become an Act! Certified Consultant</a></li>
-                        <li><a href="/affiliateprogram">Affiliate Partner Program</a></li>
-                    </ul>
-                </li>
-                <li><a href="http://www.act.com/act-blog">Blog</a></li>
-                <li>
-                    <a href="http://www.act.com/about">About</a>
-                    <ul class="last">
-                        <li><a href="http://www.act.com/about/leadership">Leadership</a></li>
-                        <li><a href="http://www.act.com/press-releases">Press</a></li>
-                        <li><a href="http://swiftpage.com/en-us/about/careers" target="_blank">Careers</a></li>
-                        <li><a href="http://swiftpage.com/privacy-policy" target="_blank">Privacy Policy</a></li>
-                    </ul>
-                </li>
+            <ul class="container">
+                <span class="dropdown">
+                    <li>
+                        <a href="http://act.com/why-act">Why Act!</a>
+                        <ul class="child">
+                            <li><a href="http://act.com/why-act/get-organized">Get Organized</a></li>
+                            <li><a href="http://act.com/why-act/know-my-customers">Know My Customers</a></li>
+                            <li><a href="http://act.com/why-act/market-my-business">Market My Business</a></li>
+                            <li><a href="http://act.com/why-act/drive-sales">Drive Sales</a></li>
+                            <li><a href="http://act.com/why-act/understand-my-business">Understand My Business</a></li>
+                            <li><a href="http://act.com/why-act/customer-success">Customer Successes</a></li>
+                        </ul>
+                    </li>
+                </span>
+                <span class="dropdown">
+                    <li>
+                        <a href="http://act.com/products">Products</a>
+                        <ul class="child">
+                            <li><a href="http://act.com/products">Act! Premium</a></li>
+                            <li><a href="http://act.com/products/act-pro">Act! Pro</a></li>
+                            <li><a href="http://act.com/products/act-emarketing">Act! emarketing</a></li>
+                            <li><a href="http://act.com/products/act-essentials">Act! Essentials</a></li>
+                            <li><a href="http://act.com/products/whats-new">What&rsquo;s New</a></li>
+                        </ul>
+                    </li>
+                </span>
+                <li><a href="http://act.com/pricing">Pricing</a></li>
+                <span class="dropdown">
+                    <li>
+                        <a href="http://act.com/resources">Customer Resources</a>
+                        <ul class="child">
+                            <li><a href="http://act.com/resources">Act! Premium Resources</a></li>
+                            <li><a href="http://act.com/resources/act-emarketing-getting-started">Act! emarketing Resources</a></li>
+                            <li><a href="https://actcloud1.zendesk.com/hc/en-us" target="_blank">Act! Essentials Resources</a></li>
+                            <li><a href="http://act.com/resources/getting-started">Act! Premium Getting Started</a></li>
+                            <li><a href="http://developer.act.com">Act! API Resources</a></li>
+                        </ul>
+                    </li>
+                </span>
+                <span class="dropdown">
+                    <li>
+                        <a href="/">Partners</a>
+                        <ul class="child">
+                            <li><a href="/search?CountryID=1">Find an Act! Certified Consultant</a></li>
+                            <li><a href="/hostingproviders">Hosting Providers</a></li>
+                            <li><a href="/distributors">Distributors</a></li>
+                            <li><a href="/becomeanacc">Become an Act! Certified Consultant</a></li>
+                            <li><a href="/affiliateprogram">Affiliate Partner Program</a></li>
+                        </ul>
+                    </li>
+                </span>
+                <li><a href="http://act.com/act-blog">Blog</a></li>
+                <span class="dropdown">
+                    <li>
+                        <a href="http://act.com/about">About</a>
+                        <ul class="child">
+                            <li><a href="http://act.com/about/leadership">Leadership</a></li>
+                            <li><a href="http://act.com/press-releases">Press</a></li>
+                            <li><a href="http://swiftpage.com/en-us/about/careers" target="_blank">Careers</a></li>
+                            <li><a href="http://swiftpage.com/privacy-policy" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                </span>
             </ul>
         </nav>
-    </div>
+    </header>
 
     @RenderBody()
 
     <!-- FOOTER -->
-    <div class="outer bg_grey">
-        <div class="container footer">
+    <footer>
+        <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-10">
                     <div class="row">
                         <div class="col-4">
-                            <h4>Company</h4>
+                            <h5>Company</h5>
                             <ul>
                                 <li><a href="http://swiftpage.com/privacy-policy" target="_blank">Privacy</a></li>
                                 <li><a href="http://swiftpage.com/en-us/about/careers" target="_blank">Careers</a></li>
-                                <li><a href="http://www.act.com/about/leadership">Leadership</a></li>
+                                <li><a href="http://act.com/about/leadership">Leadership</a></li>
                                 <li><a href="http://www.swiftpage.com" target="_blank">Swiftpage</a></li>
-                                <li><a href="http://www.act.com/about">Contact us</a></li>
-                                <li><a href="http://www.act.com/press-releases">Press Releases</a></li>
+                                <li><a href="http://act.com/about">Contact us</a></li>
+                                <li><a href="http://act.com/press-releases">Press Releases</a></li>
                             </ul>
                         </div>
                         <div class="col-4">
-                            <h4><a href="http://www.act.com/products">Act! Premium</a></h4>
+                            <h5>Act! Premium</h5>
                             <ul>
-                                <li><a href="http://www.act.com/products/act-emarketing">Email Marketing</a></li>
-                                <li><a href="http://www.actaddons.com" target="_blank">Marketplace</a></li>
+                                <li><a href="http://act.com/products/act-emarketing">Email Marketing</a></li>
+                                <li><a href="http://www.actaddons.com">Marketplace</a></li>
                                 <li><a href="http://community.act.com" target="_blank">Community</a></li>
-                                <li><a href="http://www.act.com/pricing">Pricing</a></li>
+                                <li><a href="http://act.com/pricing">Pricing</a></li>
                                 <li><a href="https://buy.act.com/en-US/trial/product/ActPremium/plan/Month">Free Trial</a></li>
                             </ul>
                         </div>
                         <div class="col-4">
-                            <h4><a href="http://www.act.com/products/act-essentials">Act! Essentials</a></h4>
+                            <h5>Act! Essentials</h5>
                             <ul>
                                 <li><a href="https://mycloud.act.com/#/login" target="_blank">Login</a></li>
-                                <li><a href="http://www.act.com/pricing/act-essentials">Pricing</a></li>
+                                <li><a href="http://act.com/pricing/act-essentials">Pricing</a></li>
                                 <li><a href="https://mycloud.act.com/signup" target="_blank">Free Trial</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-6">
-                            <h4>Connect with Act!</h4>
-                            <a href="https://www.linkedin.com/groups/?gid=1914089" target="_blank"><span class="socialIcons ico-linkedin"></span></a>
-                            <a href="https://www.facebook.com/actcrm" target="_blank"><span class="socialIcons ico-facebook"></span></a>
-                            <a href="https://twitter.com/actstory" target="_blank"><span class="socialIcons ico-twitter"></span></a>
-                            <a href="https://www.youtube.com/user/ActStory" target="_blank"><span class="glyphicon glyphicon-play"></span></a>
-                        </div>
-                        <div class="col-6">
-                            <h4>Stay in the know!</h4>
-                            <p>Sign up for emails from Act!</p>
-                            <!-- <form id="enewsSub" name="emailsubscribehome" action="https://s1966950654.t.eloqua.com/e/f2"> -->
-                            <input type="hidden" name="elqFormName" value="">
-                            <input type="hidden" name="elqSiteID" value="1966950654">
-                            <input type="hidden" name="LeadSource" value="" />
-                            <input type="hidden" name="hiddenCampaignId" value="" />
-                            <input type="hidden" name="elqCustomerGUID" value="">
-                            <input type="hidden" name="elqCookieWrite" value="0">
-                            <!-- UTM -->
-                            <input type="hidden" id="utm_source" name="utm_source" value="">
-                            <input type="hidden" name="utm_medium" value="">
-                            <input type="hidden" name="utm_content" value="">
-                            <input type="hidden" name="utm_campaign" value="">
-                            <input type="hidden" name="utm_name" value="">
-                            <input type="hidden" name="utm_term" value="">
-                            <input type="email" name="emailAddress" placeholder="Email Address" />
-                            <input type="submit" value="Sign up" id="enews_button" class="btnDefault" />
-                            <!-- </form> -->
-                        </div>
-                    </div>
+                <div class="col-2">
+                    <h5>Connect with Act!</h5>
+                    <ul class="social">
+                        <li><a class="linkedin" href="https://www.linkedin.com/groups/?gid=1914089" target="_blank"></a></li>
+                        <li><a class="facebook" href="https://www.facebook.com/actcrm" target="_blank"></a></li>
+                        <li><a class="twitter" href="https://twitter.com/actstory" target="_blank"></a></li>
+                        <li><a class="youtube" href="https://www.youtube.com/user/ActStory" target="_blank"></a></li>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="outer bg_grey">
         <div class="container disclaimers">
-            <p>Act! Certified Consultants are third-party vendors. Swiftpage is in no way liable or responsible for any claims made to products or services provided by third-party vendors.</p>
+            <!-- add cms disclaimer section here -->
+            <p class="copyright">
+                &copy;2016 Swiftpage ACT! LLC. All rights reserved. Swiftpage, Act!, and the Swiftpage product
+                and service names mentioned herein are registered trademarks or trademarks of Swiftpage ACT! LLC, or its
+                affiliated entities. All other trademarks are property of their respective owners.
+            </p>
         </div>
-    </div>
+
+    </footer>
+
+    <script src="~/Scripts/common.js"></script>
 
 </body>
 </html>

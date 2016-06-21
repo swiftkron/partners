@@ -69,19 +69,19 @@
     });
 </script>
 
-<div class="outer bg_blue">
+<section class="bg_blue">
     <div class="container">
         <h1 class="text-center">Act! Certified Consultants</h1>
-        <p class="smalltext text-center">Partners with no physical location listed are out of state ACCs with an active local customer base.</p>
+        <p class="smalltext text-center">Partners with no physical location listed are out of state ACCs who support an active local customer base.</p>
     </div>
-</div>
+</section>
 
 
 @if (Model.CompanyData != null)
 {
     <div class="partnerContainer">
-        <div class="outer bg_lightblue citySearch">
-            <div class="container inner text-center">
+        <section class="bg_lightblue citySearch">
+            <div class="container text-center">
                 <h3>
                     @if (Model.CountryData != null) { 
                         foreach (var country in Model.CountryData)
@@ -119,25 +119,25 @@
                     }
                 }
             </div>
-        </div>
-        <div class="outer partners">
-            <div class="container inner">
+        </section>
+        <section class="partners bg_white">
+            <div class="container">
                 @foreach (var company in Model.CompanyData)
                 {
                     <div class="row company @company.CityID">
-                        <div class="col-3">
+                        <div class="col-4">
                             <h3>@company.FirstName @company.LastName</h3>
                             <p><span class="loc-@company.CityID">@company.City, @company.Abbr<br /></span><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
                         </div>
                         <div class="col-6 text-center">
                             <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <img class="partnerIcon" src="http://www.act.com/images/default-source/partner-logos/@(company.Tier).png" />
                         </div>
                     </div>
                 }
             </div>
-        </div>
+        </section>
     </div>
 }
