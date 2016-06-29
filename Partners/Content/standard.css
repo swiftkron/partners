@@ -203,6 +203,9 @@ input:focus {
     -o-border-radius: 30px;
     -webkit-border-radius: 30px;
 }
+.button_lg{
+    padding: 18px 60px;
+}
 .button_orange, a.button_orange:link {
     background: #fd5000;
     color: #fff !important;
@@ -234,7 +237,7 @@ input:focus {
 
 /* layout sections */
 section {
-    padding:48px 0;
+    padding:48px 0px 72px;
 }
 section [class*='col-']{
     padding:0 24px;   
@@ -265,14 +268,48 @@ section [class*='col-']:last-child{
 }
 
 /* content type */
-.hero {
+/*** heros  ***/
+.hero1 {
+    padding:96px 0;
+		text-align:center;
+		/* default */background:url('http://www.act.com/images/default-source/background-images/hpbg.png') center center;
+		background-size:cover;
+}
+.hero1 p, .hero2 p{
+	max-width:800px;
+}
+.hero2 {
     padding:72px 0;
+		text-align:center;
+		background-size:cover;
 }
 @media(max-width:768px) {
-.hero {
+.hero1, .hero2 {
     padding:48px 24px;
 }
 }
+
 .sidebar{
     margin:24px auto;
+}
+
+/* WIDGETS */
+section#act_newsletter input.email {
+    background: #edf0f2 url(http://act.com/images/default-source/UI-Kit/letter.gif) no-repeat;
+    background-position: 20px center;
+    color: #a8acb9;
+    border: none;
+    height: 42px;
+    padding: 0 20px 0 50px;
+    border-radius: 21px;
+    -o-border-radius: 21px;
+    -moz-border-radius: 21px;
+    -webkit-border-radius: 21px;
+		margin-top:24px;
+}
+@media(max-width:768px) {
+	section#act_newsletter{
+		text-align:center;
+	}
+	section#act_newsletter input.email, #enews_button{margin-top:0px;}
 }
