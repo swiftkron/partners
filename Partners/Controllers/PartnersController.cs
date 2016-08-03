@@ -48,7 +48,7 @@ namespace Partners.Controllers
                               join st in db.States on acc.StateID equals st.StateID
                               join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
-                              where acc.StateID == state
+                              where acc.StateID == state && acc.Inactive != 1
                               select new CompanyData
                               {
                                   CompanyID = co.CompanyID,
@@ -60,6 +60,7 @@ namespace Partners.Controllers
                                   FirstName = acc.FirstName,
                                   LastName = acc.LastName,
                                   Email = acc.Email,
+                                  AccPhone = acc.AccPhone,
                                   YearCertified = acc.YearCertified,
                                   CityID = city.CityID,
                                   City = city.Name,
@@ -100,7 +101,7 @@ namespace Partners.Controllers
                               join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
                               join city in db.Cities on acc.CityID equals city.CityID
-                              where acc.Select == 1
+                              where acc.Select == 1 && acc.Inactive != 1
                               select new CompanyData
                               {
                                   CompanyID = co.CompanyID,
@@ -111,6 +112,7 @@ namespace Partners.Controllers
                                   FirstName = acc.FirstName,
                                   LastName = acc.LastName,
                                   Email = acc.Email,
+                                  AccPhone = acc.AccPhone,
                                   YearCertified = acc.YearCertified,
                                   CityID = city.CityID,
                                   City = city.Name,
@@ -139,7 +141,7 @@ namespace Partners.Controllers
                               join st in db.States on acc.StateID equals st.StateID
                               join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
-                              where acc.StateID == state && acc.Select == 1
+                              where acc.StateID == state && acc.Select == 1 && acc.Inactive != 1
                               select new CompanyData
                               {
                                   CompanyID = co.CompanyID,
@@ -151,6 +153,7 @@ namespace Partners.Controllers
                                   FirstName = acc.FirstName,
                                   LastName = acc.LastName,
                                   Email = acc.Email,
+                                  AccPhone = acc.AccPhone,
                                   YearCertified = acc.YearCertified,
                                   CityID = city.CityID,
                                   City = city.Name,
@@ -170,7 +173,7 @@ namespace Partners.Controllers
                               join co in db.Companies on acc.CompanyID equals co.CompanyID
                               join st in db.States on acc.StateID equals st.StateID
                               join city in db.Cities on acc.CityID equals city.CityID
-                              where acc.PremierTrainer == 1
+                              where acc.PremierTrainer == 1 && acc.Inactive != 1
                               select new CompanyData
                               {
                                   CompanyID = co.CompanyID,
@@ -181,6 +184,7 @@ namespace Partners.Controllers
                                   FirstName = acc.FirstName,
                                   LastName = acc.LastName,
                                   Email = acc.Email,
+                                  AccPhone = acc.AccPhone,
                                   YearCertified = acc.YearCertified,
                                   CityID = city.CityID,
                                   City = city.Name,
@@ -209,7 +213,7 @@ namespace Partners.Controllers
                               join st in db.States on acc.StateID equals st.StateID
                               join city in db.Cities on acc.CityID equals city.CityID
                               let units = (from u in db.Units where u.StateID == state && u.CompanyID == acc.CompanyID select u.UUM).FirstOrDefault()
-                              where acc.StateID == state && acc.PremierTrainer == 1
+                              where acc.StateID == state && acc.PremierTrainer == 1 && acc.Inactive != 1
                               select new CompanyData
                               {
                                   CompanyID = co.CompanyID,
@@ -221,6 +225,7 @@ namespace Partners.Controllers
                                   FirstName = acc.FirstName,
                                   LastName = acc.LastName,
                                   Email = acc.Email,
+                                  AccPhone = acc.AccPhone,
                                   YearCertified = acc.YearCertified,
                                   CityID = city.CityID,
                                   City = city.Name,

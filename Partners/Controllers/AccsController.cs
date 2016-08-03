@@ -18,7 +18,7 @@ namespace Partners.Controllers
         // GET: Accs
         public ActionResult Index()
         {
-            var accs = db.Accs.Include(a => a.City).Include(a => a.Company).Include(a => a.State);
+            var accs = db.Accs.Include(a => a.City).Include(a => a.Company).Include(a => a.State).OrderBy(a => a.LastName);
             return View(accs.ToList());
         }
 
@@ -51,7 +51,7 @@ namespace Partners.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Create([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select,AccPhone,Inactive")] Acc acc)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Partners.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select")] Acc acc)
+        public ActionResult Edit([Bind(Include = "AccID,CompanyID,StateID,CityID,FirstName,LastName,Email,YearCertified,PremierTrainer,Select,AccPhone,Inactive")] Acc acc)
         {
             if (ModelState.IsValid)
             {

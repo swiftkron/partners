@@ -18,7 +18,7 @@ namespace Partners.Controllers
         // GET: Cities
         public ActionResult Index()
         {
-            var cities = db.Cities.Include(c => c.State);
+            var cities = db.Cities.Include(c => c.State).OrderBy(a => a.Name);
             return View(cities.ToList());
         }
 

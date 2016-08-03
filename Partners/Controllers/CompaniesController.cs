@@ -18,7 +18,8 @@ namespace Partners.Controllers
         // GET: Companies
         public ActionResult Index()
         {
-            return View(db.Companies.ToList());
+            var companies = db.Companies.OrderBy(a => a.Title);
+            return View(companies.ToList());
         }
 
         // GET: Companies/Details/5

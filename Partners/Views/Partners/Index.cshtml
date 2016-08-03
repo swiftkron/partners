@@ -127,7 +127,7 @@
                     <div class="row company @company.CityID">
                         <div class="col-4">
                             <h3>@company.FirstName @company.LastName</h3>
-                            <p><span class="loc-@company.CityID">@company.City, @company.Abbr<br /></span><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @company.Phone<br /><b>Certified since:</b> @company.YearCertified</p>
+                            <ps><span class="loc-@company.CityID">@company.City, @company.Abbr<br /></span><b>Email:</b> <a href="mailto:@company.Email">@company.Email</a><br /><b>Phone:</b> @if(@company.AccPhone != null){@company.AccPhone}else{@company.Phone}<br /><b>Certified since:</b> @company.YearCertified</ps>
                         </div>
                         <div class="col-6 text-center">
                             <p><b>@company.Company</b><br /><a href=http://@company.Website target="_blank">@company.Website</a></p>

@@ -36,6 +36,9 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AccPhone)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.YearCertified)
             </th>
             <th>
@@ -43,6 +46,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Select)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inactive)
             </th>
             <th></th>
         </tr>
@@ -68,6 +74,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.AccPhone)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.YearCertified)
             </td>
             <td>
@@ -75,6 +84,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Select)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inactive)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.AccID }) |

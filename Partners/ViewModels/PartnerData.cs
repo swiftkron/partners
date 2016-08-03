@@ -45,10 +45,12 @@ namespace Partners.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string AccPhone { get; set; }
         public int CityID { get; set; }
         public string City { get; set; }
         public string YearCertified { get; set; }
         public string Select { get; set; }
         public string PremierTrainer { get; set; }
+        public string Inactive { get; set; }
     }
 }
